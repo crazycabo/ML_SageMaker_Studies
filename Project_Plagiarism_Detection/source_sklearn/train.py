@@ -3,11 +3,10 @@ from __future__ import print_function
 import argparse
 import os
 import pandas as pd
-
-from sklearn.externals import joblib
+import joblib
 
 ## TODO: Import any additional libraries you need to define a model
-
+from sklearn.ensemble import AdaBoostClassifier
 
 # Provided model load function
 def model_fn(model_dir):
@@ -50,21 +49,12 @@ if __name__ == '__main__':
     # Labels are in the first column
     train_y = train_data.iloc[:,0]
     train_x = train_data.iloc[:,1:]
-    
-    
-    ## --- Your code here --- ##
-    
 
-    ## TODO: Define a model 
-    model = None
-    
+    ## TODO: Define a model
+    model = AdaBoostClassifier(n_estimators=100)
     
     ## TODO: Train the model
-    
-    
-    
-    ## --- End of your code  --- ##
-    
+    model.fit(train_x, train_y)
 
     # Save the trained model
     joblib.dump(model, os.path.join(args.model_dir, "model.joblib"))
