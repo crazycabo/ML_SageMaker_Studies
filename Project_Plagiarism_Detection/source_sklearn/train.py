@@ -51,7 +51,7 @@ if __name__ == '__main__':
     train_x = train_data.iloc[:,1:]
 
     ## TODO: Define a model
-    model = AdaBoostClassifier(n_estimators=100)
+    model = AdaBoostClassifier(n_estimators=70)
     
     ## TODO: Train the model
     model.fit(train_x, train_y)
